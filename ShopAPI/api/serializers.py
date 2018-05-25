@@ -11,24 +11,20 @@ class ProductsSerializer(serializers.ModelSerializer):
             'brand_name',
             'stock_number',
             'image',
-           
+            'user'
         ]
 
 
 class ShowWishlistSerializer(serializers.HyperlinkedModelSerializer):
-    # data = serializers.DateTimeField(source='create')
-
     product_name = serializers.CharField(source='name.product_name', max_length = 256)
     brand_name = serializers.CharField(source='name.brand_name',max_length =256)
     stock_number = serializers.DecimalField(source='name.stock_number' , max_digits= 15, decimal_places=0)
     image = serializers.FileField(source='name.image')
-    # stock_number = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     
     class Meta:
         model = Products
         fields = [
-            # 'data',
-             'pk',
+            'pk',
             'product_name',
             'brand_name',
             'stock_number',
