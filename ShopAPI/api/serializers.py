@@ -14,7 +14,6 @@ class ProductsSerializer(serializers.ModelSerializer):
             'user'
         ]
 
-
 class ShowWishlistSerializer(serializers.HyperlinkedModelSerializer):
     product_name = serializers.CharField(source='name.product_name', max_length = 256)
     brand_name = serializers.CharField(source='name.brand_name',max_length =256)
@@ -28,14 +27,12 @@ class ShowWishlistSerializer(serializers.HyperlinkedModelSerializer):
             'product_name',
             'brand_name',
             'stock_number',
-            'image',
-          
+            'image'
         ]
 
 class WishlistSerializer(serializers.ModelSerializer):
     class Meta:
         model= Wishlist
         fields = [
-            'name',
-            
+            'name'
         ]
