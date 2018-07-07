@@ -1,11 +1,15 @@
 from django.contrib import admin
 from django.conf.urls import url
+
+
+
 from .views import (
     ProductsAPIView,
     ProductsDetailsAPIView,
     WishlistAPIView,
     WishlistDetailsAPIView,
     ShowWishlistAPIView,
+    ShowOnly
 )
 
 urlpatterns = [
@@ -14,4 +18,7 @@ urlpatterns = [
     url(r'^wishlist/$', WishlistAPIView.as_view()),
     url(r'^wishlist/(?P<pk>\d+)/$', WishlistDetailsAPIView.as_view()),
     url(r'^showwishlist/$', ShowWishlistAPIView.as_view()),
+    url(r'^showonly/$', ShowOnly.as_view()),
+
+    
 ]

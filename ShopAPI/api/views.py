@@ -1,4 +1,6 @@
 import json
+import urllib
+
 
 from rest_framework.generics import ListAPIView
 from rest_framework import generics, mixins
@@ -84,6 +86,30 @@ class ShowWishlistAPIView(
     queryset                    = Wishlist.objects.all()
     
 
+
+class ShowOnly(
+    mixins.CreateModelMixin, 
+    generics.ListAPIView):
+    permission_classes          = []
+    authentication_classes      = []
+    serializer_class            = ShowWishlistSerializer
+    passed_id                   = None
+    
+    def get_queryset(self):
+        qs = Wishlist.objects.all()
+        request = self.request
+        query = request.GET.get('many')
+        
+        
+        if query is not None:
+        
+            qs = qs.filter(name__stock_number = query)
+        
+        return qs
+
+
+
+    
 
 
 
